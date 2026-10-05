@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "GWM-Pilot v1: A Reversible Yang-Mills Stack for Geometric Deep Learning"
+abstract: >
+  Pilot release of a reversible Yang-Mills stack with symplectic
+  integration. Contains the verification results, trained models, and
+  the pilot's central technical finding: the A-update rule is strictly
+  local in voxel space, which determines when the architecture
+  succeeds (local A-processing) and when it fails (non-local transport).
+authors:
+  - family-names: Devi
+    given-names: Sushain
+version: "1.0.0"
+date-released: 2026-10-05
+license: Apache-2.0
+repository-code: https://github.com/SushainDevi/GWM-Pilot
+keywords:
+  - geometric deep learning
+  - gauge theory
+  - Clifford algebra
+  - symplectic integration
+  - reversible neural networks
