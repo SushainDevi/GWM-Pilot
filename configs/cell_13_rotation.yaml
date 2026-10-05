@@ -1,0 +1,95 @@
+# Cell 13 — Rotation direction (neutral result)
+# The architecture is neutral: task is M-solvable, A unused.
+# Reference: results/cell_13_results.json, cell_13_v3_sweep.json
+
+experiment: cell_13_rotation
+description: >
+  Predict the direction of a bulge on a sphere. Task is solvable
+  from M alone (A-irrelevant). The architecture is neutral —
+  held-out angle saturates at 8.14° across all tested configs.
+
+seed: 13130
+
+# --- Data ---
+data:
+  scene_type: bulge_sphere
+  n_pts: 2000
+  train_scenes: 500
+  heldout_scenes: 50
+  target: R_g @ z                 # world-frame direction of bulge
+  generation: make_bulge_scene
+
+# --- Model ---
+model:
+  encoder:
+    class: EquivariantVoxelEncoder
+    version: v5                   # updated from Cell 6 v5
+    grid_res: 64
+  stack:
+    n_layers: 4
+    dt: 0.1
+    layer_class: FirstOrderLeapfrogLayer
+    proj_init_std: 1.0e-3
+    v_correction_scale: 1.0
+  decoder:
+    class: DirectionalPoseDecoder
+    output: unit_vector           # R_pred = t_raw / ‖t_raw‖
+    reads: M8
+
+# --- Training (config A — baseline) ---
+training:
+  n_epochs: 10
+  batch_size: 1
+  optimizer: AdamW
+  lr_encoder: 5.0e-4
+  lr_w_proj: 1.0e-2
+  lr_v_net: 1.0e-3
+  clip: 1.0                        # global clip (single group)
+  scheduler: CosineAnnealingLR
+
+# --- Sweep (configs B and C) ---
+sweep:
+  configs:
+    A_baseline:
+      lr_encoder: 5.0e-4
+      n_layers: 4
+      n_epochs: 10
+    B_higher_lr:
+      lr_encoder: 2.0e-3
+      n_layers: 4
+      n_epochs: 10
+    C_deeper:
+      lr_encoder: 5.0e-4
+      n_layers: 8
+      n_epochs: 10
+
+# --- Results (all three configs converged to identical result) ---
+results:
+  A_baseline:
+    heldout_loss_mean: 0.024609
+    heldout_angle_mean_deg: 8.14
+    equivariance_ratio: 0.0766
+    reduction: 1.006
+  B_higher_lr:
+    heldout_loss_mean: 0.024625
+    heldout_angle_mean_deg: 8.14
+    equivariance_ratio: 0.0769
+    reduction: 1.004
+  C_deeper:
+    heldout_loss_mean: 0.024605
+    heldout_angle_mean_deg: 8.14
+    equivariance_ratio: 0.0765
+    reduction: 1.011
+
+interpretation: >
+  Task saturated at initialization. Three configs (varying LR and depth)
+  all reach identical held-out angle (8.14°). The architecture is
+  neutral: it uses the M-path to solve the task and does not exercise
+  the A-path (∂L/∂W_proj = 0.0 exactly).
+
+references:
+  finding: findings/architectural_limit.md
+  artifacts:
+    - results/cell_13_results.json
+    - results/cell_13_v2_results.json
+    - results/cell_13_v3_sweep.json

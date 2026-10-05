@@ -1,0 +1,98 @@
+# Block 15 v2 — Active Torque, patched stack (informative negative)
+# Same as v3 but with a trainable decoder. Loss rises from 4.76
+# (overfit), transport ratio stays at 0.0000.
+# Reference: results/block_15_v2_results.json
+
+experiment: block_15_v2_torque
+description: >
+  Torque is injected into the momentum at the top of a straight rod.
+  The decoder reads A at the bottom. The v2 patch fixes the
+  ReversibleStackFn gradient bug and passes nonzero d_M. Gradients
+  become healthy, but transport ratio is still exactly 0.0000.
+
+seed: 15150
+
+# --- Rod ---
+rod:
+  n_pts: 2000
+  half_len: 1.0
+  top_threshold: 0.4
+  bottom_threshold: -0.4
+  geometry: fixed                  # same point cloud every scene
+  generation: make_straight_rod_scene
+
+# --- Torque ---
+torque:
+  std: 1.0                         # ω ~ N(0, 1)
+  scale: 5.0                       # injected magnitude multiplier
+  target: exp_so3(ω)
+
+# --- Data ---
+data:
+  train_scenes: 300
+  heldout_scenes: 30
+
+# --- Model ---
+model:
+  encoder:
+    class: EquivariantVoxelEncoder
+    version: v5
+    grid_res: 48
+  stack:
+    n_layers: 4
+    stack_dt: 0.2
+    layer_class: CappedLayer
+    j_cap: 5.0
+    a_cap: 100.0
+    use_reversible_fn: false       # bypass via _run_layers
+  decoder:
+    class: BottomADecoder
+    log_scale_init: 100.0
+    mu_weights_init: [1.0, 1.0, 1.0]
+    frozen: false
+
+# --- Training ---
+training:
+  n_epochs: 30
+  batch_size: 8
+  optimizer: AdamW
+  param_groups:
+    encoder:  {lr: 5.0e-3, weight_decay: 1.0e-5}
+    W_proj:   {lr: 5.0e-3, weight_decay: 0.0}
+    b_proj:   {lr: 5.0e-3, weight_decay: 0.0}
+    V_net:    {lr: 5.0e-4, weight_decay: 1.0e-5}
+    decoder:  {lr: 1.0e-2, weight_decay: 0.0}
+  clip_groups:
+    encoder: 1.0
+    W_proj:  0.5
+    b_proj:  0.5
+    V_net:   0.5
+
+# --- Results ---
+results:
+  gradient_trace_init:
+    encoder: 1.7770e+02
+    W_proj: 9.8159
+    b_proj: 5.0403
+    V_net: 4.4965e-2
+    decoder: 2.5910
+  transport_ratio_all_epochs: 0.0000
+  A8_bottom_diff: 0.0000e+00
+  train_loss_initial: 4.6673
+  train_loss_final: 3.8090
+  heldout_error_deg: 93.29
+  null_error_deg: 92.63
+  error_ratio: 1.0071
+  verdict: fail
+
+interpretation: >
+  With healthy gradients and nonzero d_M, the model still cannot
+  transport torque from top to bottom. Transport ratio is bit-identical
+  zero. But because the decoder has parameters, the model overfits to
+  A8_bottom patterns and loss rises. This is why v3 exists — freezing
+  the decoder removes the overfitting channel.
+
+references:
+  finding: findings/architectural_limit.md
+  verification: verification/block_15_transport.md
+  artifacts: results/block_15_v2_results.json

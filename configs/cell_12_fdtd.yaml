@@ -1,0 +1,95 @@
+# Cell 12 — FDTD field prediction (positive result)
+# The one task where the architecture succeeds cleanly.
+# Reference: results/block_9_v2_summary.json
+
+experiment: cell_12_fdtd
+description: >
+  Given (A_0, E_0, B_0) at one time step, predict (A_1) at the next
+  step of a 3D wave equation on a periodic grid. Decoder reads A8
+  per-voxel; task is local-to-local.
+
+seed: 4242
+
+# --- Grid ---
+grid:
+  L: 16
+  n_voxels: 4096
+  dt: 0.5
+  c: 1.0
+  dx: 1.0
+  boundary: periodic
+
+# --- Data ---
+data:
+  n_samples: 10000
+  n_chunks: 10
+  chunk_size: 1000
+  n_modes: 4                     # Fourier modes summed per sample
+  mode_amp: 0.5
+  E_amp: 0.05                    # E_0 perturbation scale
+  dir: /kaggle/working/fdtd_data
+  # Regenerate with: gwm_pilot.tasks.fdtd.data.generate()
+
+# --- Model ---
+model:
+  encoder:
+    class: GWMEncoderFDTD
+    h_dim: 512
+    mlp:
+      - {type: Linear, in: 9, out: 256}
+      - {type: GELU}
+      - {type: Linear, in: 256, out: 512}
+      - {type: LayerNorm, dim: 512}
+  stack:
+    n_layers: 4
+    dt: 0.1                      # DT * 10
+    layer_class: CappedFirstOrderLayer
+    j_cap: 0.5
+    a_cap: 10.0
+    v_correction_scale: 1.0
+    proj_init_std: 1.0e-3
+  decoder:
+    class: GWMDecoderFDTD
+    mlp:
+      - {type: Linear, in: 300, out: 128}
+      - {type: GELU}
+      - {type: Linear, in: 128, out: 64}
+      - {type: GELU}
+      - {type: Linear, in: 64, out: 3}
+    final_init_std: 1.0e-3
+    residual: true               # output = A_0 + delta
+
+# --- Training ---
+training:
+  n_epochs: 30
+  batch_size: 4
+  optimizer: AdamW
+  param_groups:
+    encoder:  {lr: 5.0e-4, weight_decay: 1.0e-5}
+    decoder:  {lr: 5.0e-4, weight_decay: 1.0e-5}
+    W_proj:   {lr: 1.0e-2, weight_decay: 0.0}
+    b_proj:   {lr: 1.0e-2, weight_decay: 0.0}
+    V_net:    {lr: 1.0e-3, weight_decay: 1.0e-5}
+  scheduler: CosineAnnealingLR
+  grad_clip: 1.0
+  clip_groups:
+    encoder: 1.0
+    W_proj:  0.5
+    b_proj:  0.5
+    V_net:   0.5
+  early_stop: null
+
+# --- Result ---
+result:
+  test_mse: 0.022243
+  trivial_baseline: 0.117202
+  improvement_factor: 5.27
+  MLP_supervised_mse: 0.020190
+  MLP_ratio: 1.10
+  verdict: positive
+
+references:
+  finding: findings/architectural_limit.md
+  verification: verification/cell_1_v7.md
+  artifacts: results/block_9_v2_summary.json
+  model_weights: weights/cell_14_ribbon_v7/  # not this task, see below

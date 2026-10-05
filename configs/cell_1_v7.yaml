@@ -1,0 +1,92 @@
+# Cell 1 v7 — Primitives and gradient-path fixes
+# Defines the constants, interface contract, and layer classes.
+# Verification: verification/cell_1_v7.md
+
+experiment: cell_1_v7
+description: >
+  Primitives (Clifford, Lie, gauge, grid, layers) plus the v7
+  gradient-path fixes (LearnableJLayer, FirstOrderLeapfrogLayer).
+  This cell is the foundation for all downstream experiments.
+
+seed: 42
+
+# --- Interface contract ---
+interface:
+  K_sem: 10        # so(K) dimension
+  D_mv: 8          # multivector dimension (Cl(3,0))
+  D_h: 512         # semantic fiber dimension
+  n_layers: 8      # default stack depth
+  dt: 0.01         # default layer time step
+
+# --- Tensor shapes ---
+shapes:
+  M:   [null, 8]
+  p:   [null, 8]
+  A:   [null, 3, 10, 10]
+  h:   [null, 512]
+  P:   [10, 512]
+  psi: [null, 520]
+
+# --- Numerical choices ---
+numerics:
+  gauge_fix:
+    method: newton_schulz_polar
+    n_iter: 20
+    eps: 1.0e-8
+  symplectic:
+    method: leapfrog
+    energy_drift_target: 0.0001    # < 0.01%
+  reversible_stack:
+    save_for_backward: [M_out, p_out, A_out, h_out]
+
+# --- Layer classes ---
+layers:
+  base:
+    class: YMSLayer
+    dt: 0.01
+  learnable_j:
+    class: LearnableJLayer
+    dt: 0.01
+    proj_init_std: 1.0e-3
+  first_order:
+    class: FirstOrderLeapfrogLayer
+    dt: 0.01
+    proj_init_std: 1.0e-3
+    v_correction_scale: 1.0
+
+# --- Potential MLP ---
+potential:
+  d_in: 520
+  d_h1: 512
+  d_h2: 256
+  d_out: 1
+  gain: 0.1
+  final_bias: false
+
+# --- Gradient-path fix (v7) ---
+gradient_fix:
+  description: >
+    Add learnable W_proj/b_proj between grade-1 extraction and so(10)
+    lift, and add explicit -dt·∇V correction to M_next. Raises V_net
+    gradient from ~1e-14 to ~1e-6 (10^8×).
+  learnable_projection:
+    init: identity
+    perturbation_std: 1.0e-3
+  first_order_correction:
+    scale: 1.0
+
+# --- Verified properties ---
+verified:
+  clifford_associativity: 7.63e-6
+  grade_orthogonality: 0.0
+  jacobi_identity: 1.12e-8
+  bch_leading_order: 1.28e-7
+  newton_schulz_orthogonality: 1.19e-7
+  leapfrog_energy_drift_pct: 0.002081
+  reversible_stack_M_err: 1.33e-8
+  wu_yang_residual: 1.79e-7
+
+references:
+  finding: findings/architectural_limit.md
+  verification: verification/cell_1_v7.md
+  artifacts: [results/cell_2_results.json, results/cell_3_results.json, results/cell_4_results.json]

@@ -1,0 +1,77 @@
+# Cell 6 v5 — Equivariant encoder with explicit scene offset
+# The final encoder iteration before downstream tasks.
+# Verification: verification/cell_6_v5_encoder.md
+
+experiment: cell_6_v5_encoder
+description: >
+  Equivariant voxelizer + Clifford field builder + semantic encoder
+  with explicit scene-projection offset. h0 varies with scene geometry
+  while preserving rotation-equivariance on canonical scenes.
+
+seed: 6060
+
+# --- Voxelizer ---
+voxelizer:
+  class: EquivariantVoxelizer
+  grid_res: 64
+  normalization: centroid_radius    # not AABB
+  # Centroid and max_radius are invariant under global rotation
+  # about the centroid; normalized coordinates transform by R_g.
+
+# --- Multivector builder ---
+mv_builder:
+  class: EquivariantCliffordFieldBuilder
+  pca_min_points: 3      # voxels with fewer points get zero normal
+  orientation: outward   # sign of (normal · position from centroid)
+
+# --- Semantic encoder ---
+semantic_encoder:
+  class: InvariantSemanticEncoder
+  version: v5
+  label_dim: 256
+  h_dim: 512
+
+  # Input dimension breakdown (total 268)
+  input_components:
+    density: 1                 # M0[:, 0]
+    rgb_norm: 1                # ‖rgb‖
+    pos_mag: 1                 # ‖M0[:, 1:4]‖
+    biv_mag: 1                 # ‖M0[:, 4:7]‖
+    biv_unit: 3                # M0[:, 4:7] / ‖M0[:, 4:7]‖
+    biv_sin: 1                 # sin(atan2(B_yz, B_zx))
+    biv_cos: 1                 # cos(atan2(B_yz, B_zx))
+    scene_mean: 3              # mean_v(M0[:, 4:7]) broadcast
+    label_embed: 256
+
+  # MLP
+  mlp:
+    linear_in: 268
+    hidden: 512
+    activation: GELU
+    final_layer_norm: true
+
+  # Explicit scene offset (v5 new)
+  scene_projection:
+    enabled: true
+    in_dim: 5                # [biv_mean(3), twist_mag(1), twist_sign(1)]
+    out_dim: 512
+    init_std: 0.1
+    add_after: LayerNorm     # critical: offset added post-LayerNorm
+
+# --- Verified scene sensitivity (v5) ---
+verified:
+  h0_variation_across_twists_min: 0.58
+  h0_pos_neg_separation: 4.49
+  h0_scene_variance_absolute: 2.13
+  scene_offset_ratio: 0.10
+  equivariance_residual_informational: 5.46e-2   # not invariant by design
+
+references:
+  finding: findings/architectural_limit.md
+  verification: verification/cell_6_v5_encoder.md
+  artifacts:
+    - results/cell_6_results.json
+    - results/cell_6_v2_results.json
+    - results/cell_6_v3_results.json
+    - results/cell_6_v4_results.json
+    - results/cell_6_v5_results.json
