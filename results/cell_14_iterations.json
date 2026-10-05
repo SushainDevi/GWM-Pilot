@@ -1,0 +1,55 @@
+{
+  "note": "Reconstructed from notebook output \u2014 Cell 14 iteration history",
+  "reconstructed_at": "2026-10-04T13:42:29.039970+00:00",
+  "iterations": [
+    {
+      "version": "v1",
+      "dt_holo": 1.0,
+      "stack_dt": 0.01,
+      "result": "Loss flat at ~4.12",
+      "probe_err_z": null,
+      "final_loss": null
+    },
+    {
+      "version": "v2",
+      "dt_holo": 100.0,
+      "stack_dt": 0.1,
+      "result": "Loss DIVERGED (5.76 \u2192 6.22)",
+      "probe_err_z": null
+    },
+    {
+      "version": "v3",
+      "dt_holo": 4.0,
+      "stack_dt": 0.1,
+      "result": "Loss dropped to 3.63 then oscillated",
+      "final_loss": 3.63
+    },
+    {
+      "version": "v4",
+      "clip": "global 0.1",
+      "batch": 8,
+      "result": "g_enc = 1.00e-01 every epoch (clip saturated)",
+      "final_loss": 4.001
+    },
+    {
+      "version": "v5",
+      "clip": "split",
+      "detach": "curriculum",
+      "result": "ReversibleStackFn requires grad inputs \u2014 failed",
+      "final_loss": null
+    },
+    {
+      "version": "v5b (final)",
+      "clip": "split enc=1.0 W=0.5 V=0.5",
+      "caps": {
+        "j_cap": 0.5,
+        "a_cap": 10.0
+      },
+      "lr_encoder": 0.005,
+      "probe_err_z": 0.956,
+      "heldout_err_z": 1.66,
+      "final_loss": 0.5042,
+      "result": "Probe works (55\u00b0), held-out fails (95\u00b0) \u2014 mean attractor"
+    }
+  ]
+}

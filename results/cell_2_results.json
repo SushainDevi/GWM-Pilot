@@ -1,0 +1,35 @@
+{
+  "checks": {
+    "2.1.1 Reversion anti-automorphism": true,
+    "2.1.2 Grade orthogonality of Clifford inner product": true,
+    "2.1.3a Unit-rotor condition R R~ = 1": true,
+    "2.1.3b Rotor commutes with grade projection": true,
+    "2.1.4 Unit-rotor norm preservation": true,
+    "2.2.1 Jacobi identity on so(K)": true,
+    "2.2.2 Adjoint action preserves skewness": true,
+    "2.2.3 BCH leading order": true,
+    "2.3a Central FD converges (error decreases with resolution)": true,
+    "2.3b Convergence rate \u2248 2 (O(dx\u00b2))": true,
+    "2.4.1 F(A=0) = 0 exactly": true,
+    "2.4.2 Commutator antisymmetry": true,
+    "2.4.3 Constant-gauge covariance": true,
+    "2.5.2 Rectangular loop \u2192 commutator": true
+  },
+  "passed": 14,
+  "total": 14,
+  "all_pass": true,
+  "seed": 2024,
+  "timestamp": "2026-10-01T05:18:04.052043+00:00",
+  "note": "Reconstructed from notebook output",
+  "reconstructed_at": "2026-10-04T13:47:49.373158+00:00",
+  "key_values": {
+    "clifford_associativity_max_err": 7.63e-06,
+    "grade_orthogonality_max": 0.0,
+    "jacobi_max": 1.12e-08,
+    "adjoint_skew_err": 1.79e-07,
+    "bch_err": 1.28e-07,
+    "fd_slope": 1.958,
+    "wu_yang_residual": 1.79e-07,
+    "holonomy_loop_err": 6.93e-08
+  }
+}

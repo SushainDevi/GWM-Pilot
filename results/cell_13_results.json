@@ -1,0 +1,47 @@
+{
+  "note": "Reconstructed from notebook output (Cell 13 v1)",
+  "reconstructed_at": "2026-10-04T13:42:29.039970+00:00",
+  "version": "cell_13_v1",
+  "config": {
+    "grid_res": 64,
+    "n_pts_per_scene": 2000,
+    "train_scenes": 500,
+    "heldout_scenes": 50,
+    "n_epochs": 10,
+    "batch_size": 1,
+    "lr_encoder": 0.0005,
+    "lr_w_proj": 0.01,
+    "lr_v_net": 0.001,
+    "grad_clip": 1.0,
+    "decoder": "DirectionalPoseDecoder",
+    "layer_class": "FirstOrderLeapfrogLayer"
+  },
+  "results": {
+    "gradient_trace": {
+      "base_encoder_grad": 1.5585e-06,
+      "base_V_net_grad": 8.3065e-05,
+      "fixed_encoder_grad": 1.5691e-06,
+      "fixed_V_net_grad": 0.0037231,
+      "fixed_W_proj_grad": 0.0,
+      "fixed_b_proj_grad": 0.0,
+      "V_ratio_fixed_over_base": 44.82,
+      "note_W_proj_zero": "Expected: decoder reads M8, not A8"
+    },
+    "heldout": {
+      "mean_loss": 0.024621,
+      "median_loss": 0.01713,
+      "mean_angle_deg": 8.14,
+      "median_angle_deg": 7.5,
+      "p90_angle_deg": 13.4
+    },
+    "equivariance": {
+      "residual": 0.10094,
+      "no_info_baseline": 1.3182,
+      "sensitivity": 1.4191,
+      "ratio": 0.0766
+    },
+    "per_epoch_reduction": 0.99
+  },
+  "checks_passed": 8,
+  "checks_total": 11
+}

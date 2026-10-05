@@ -1,0 +1,51 @@
+{
+  "seed": 4242,
+  "timestamp": "2026-10-04T09:41:38.292857+00:00",
+  "checks": {
+    "FDTD: test MSE < trivial baseline": true,
+    "FDTD: W_proj gradient nonzero at init": true,
+    "FDTD: V_net gradient nonzero at init": false,
+    "Rotation: held-out angle < 15\u00b0": true,
+    "Rotation: equivariance ratio < 0.20": true
+  },
+  "checks_passed": 4,
+  "checks_total": 5,
+  "fdtd": {
+    "grad_trace": {
+      "encoder": 1.1279995932820786e-06,
+      "decoder": 0.0002548915919023535,
+      "W_proj": 4.02927323731874e-08,
+      "b_proj": 3.230662976160609e-08,
+      "V_net": 4.52874933875483e-12,
+      "A0_input": 0.00766410818323493
+    },
+    "test_mse": 0.022243326529860497,
+    "test_mae": 0.11622711271047592,
+    "baseline_mse": 0.11720245331525803,
+    "improvement": 5.269106361313353,
+    "train_mse_initial": 0.038087421122007074,
+    "train_mse_final": 0.022550461407285182,
+    "val_mse_initial": 0.047559019178152084,
+    "val_mse_final": 0.04396367073059082,
+    "wall_time_s": 4008.594701051712,
+    "data_generation_time_s": 75.89893007278442,
+    "n_samples": 10000
+  },
+  "rotation": {
+    "grad_trace": {
+      "encoder": 1.3287304737174443e-06,
+      "W_proj": 0.0,
+      "b_proj": 0.0,
+      "V_net": 0.0028772569690866164
+    },
+    "heldout_loss_mean": 0.023254636321216823,
+    "heldout_angle_mean": 7.872421151007896,
+    "heldout_angle_median": 7.541849794119572,
+    "heldout_angle_p90": 12.697824108579214,
+    "equivariance_residual": 0.06323361396789551,
+    "equivariance_baseline": 0.8317255973815918,
+    "equivariance_ratio": 0.07602701439869744,
+    "per_epoch_reduction": 1.0133227341487268,
+    "wall_time_s": 273.33186435699463
+  }
+}

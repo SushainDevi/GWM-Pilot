@@ -1,0 +1,60 @@
+{
+  "note": "Reconstructed from notebook output (Cell 13 v3 \u2014 LR/depth sweep)",
+  "reconstructed_at": "2026-10-04T13:42:29.039970+00:00",
+  "version": "cell_13_v3",
+  "baselines": {
+    "cell7": {
+      "heldout_loss_mean": 0.022857,
+      "heldout_angle_mean": 7.67,
+      "equivariance_ratio": 0.11
+    },
+    "cell13_v1": {
+      "heldout_loss_mean": 0.024621,
+      "heldout_angle_mean": 8.14,
+      "equivariance_ratio": 0.0766
+    },
+    "cell13_v2": {
+      "heldout_angle_mean": 90.22,
+      "note": "broken decoder"
+    }
+  },
+  "sweep": [
+    {
+      "name": "A_baseline",
+      "lr_encoder": 0.0005,
+      "n_layers": 4,
+      "n_epochs": 10,
+      "heldout_loss_mean": 0.024609,
+      "heldout_angle_mean": 8.14,
+      "heldout_angle_p90": 13.38,
+      "equivariance_ratio": 0.0766,
+      "reduction": 1.006,
+      "wall_time_s": 272.9
+    },
+    {
+      "name": "B_higher_lr",
+      "lr_encoder": 0.002,
+      "n_layers": 4,
+      "n_epochs": 10,
+      "heldout_loss_mean": 0.024625,
+      "heldout_angle_mean": 8.14,
+      "heldout_angle_p90": 13.42,
+      "equivariance_ratio": 0.0769,
+      "reduction": 1.004,
+      "wall_time_s": 272.4
+    },
+    {
+      "name": "C_deeper",
+      "lr_encoder": 0.0005,
+      "n_layers": 8,
+      "n_epochs": 10,
+      "heldout_loss_mean": 0.024605,
+      "heldout_angle_mean": 8.14,
+      "heldout_angle_p90": 13.37,
+      "equivariance_ratio": 0.0765,
+      "reduction": 1.011,
+      "wall_time_s": 437.2
+    }
+  ],
+  "conclusion": "All three configs reach identical held-out angle (8.14\u00b0). Task saturated at initialization; encoder LR and depth do not affect result."
+}

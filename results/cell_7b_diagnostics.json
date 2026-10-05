@@ -1,0 +1,30 @@
+{
+  "note": "Partial reconstruction \u2014 Cell 7b D1 (loss trend) only",
+  "reconstructed_at": "2026-10-04T13:42:29.039970+00:00",
+  "D1_loss_trend": {
+    "initial_window_mean": 0.025046,
+    "final_window_mean": 0.025642,
+    "note": "Single-scene vs window comparison artifact; real behavior was flat at ~0.0277"
+  },
+  "D5_task_depends_on_A": {
+    "decoder_uses_A": false,
+    "task_needs_A": false,
+    "delta_zeroA": 0.0,
+    "delta_Mpert": 0.68654
+  },
+  "D6_lambda_ym_experiment": {
+    "0.1": {
+      "curvature": 3.076157e-05,
+      "A_norm_per_voxel": 0.00028102
+    },
+    "1.0": {
+      "curvature": 2.985654e-05,
+      "A_norm_per_voxel": 0.00027819
+    },
+    "10.0": {
+      "curvature": 2.834691e-05,
+      "A_norm_per_voxel": 0.0002709
+    }
+  },
+  "lambda_sensitive": false
+}

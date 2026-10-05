@@ -1,0 +1,87 @@
+{
+  "checks": {
+    "7.5a L_task reduced by > 10\u00d7": false,
+    "7.5b Final L_task below convergence threshold (< 0.05)": true,
+    "7.6a Held-out L_task < 0.5": true,
+    "7.6b Held-out mean angle < 30\u00b0": true,
+    "7.7a Curvature in plateau range [0.3, 1.5]": false,
+    "7.7b Stokes ratio > 1.0 (non-Abelian curvature)": true,
+    "7.7c Energy conservation |\u0394H/H\u2080| < 0.1": true,
+    "7.7d Wu-Yang covariance residual < 0.1": true,
+    "7.7e No NaN/Inf in trained parameters": true
+  },
+  "passed": 7,
+  "total": 9,
+  "all_pass": false,
+  "seed": 7070,
+  "timestamp": "2026-10-04T08:11:07.568726+00:00",
+  "config": {
+    "train_scenes": 500,
+    "heldout_scenes": 50,
+    "n_epochs": 20,
+    "total_steps": 500,
+    "lambda_ym_max": 0.01,
+    "lambda_ym_warmup": 5000,
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "grad_clip": 1.0,
+    "training_time_s": 38.747683771000084
+  },
+  "training_curves": {
+    "steps": [
+      0,
+      100,
+      200,
+      300,
+      400
+    ],
+    "L_total": [
+      0.010365163907408714,
+      0.01437345240265131,
+      0.00661381846293807,
+      0.0005598781281150877,
+      0.005991811864078045
+    ],
+    "L_task": [
+      0.008641771040856838,
+      0.014350342564284801,
+      0.006575317122042179,
+      0.0005582799203693867,
+      0.005944265518337488
+    ],
+    "L_ym": [
+      2.2756695727821352e-07,
+      8.567796783154336e-08,
+      1.1514927678035747e-07,
+      1.3856231362296967e-07,
+      7.403597379607163e-08
+    ],
+    "lambda_ym": [
+      0.0,
+      0.0002,
+      0.0004,
+      0.0006,
+      0.0008
+    ]
+  },
+  "diagnostics": {
+    "step": [],
+    "curvature_mean": [],
+    "stokes_ratio": [],
+    "energy": [],
+    "wu_yang_residual": []
+  },
+  "heldout": {
+    "mean_loss": 0.02285665778850671,
+    "median_loss": 0.015882879495620728,
+    "mean_angle_deg": 7.671912346756742,
+    "median_angle_deg": 7.225617646497358,
+    "p90_angle_deg": 13.450073516445213
+  },
+  "geometric_invariants": {
+    "curvature_plateau": 3.379133340786211e-05,
+    "stokes_ratio": 1.0000001063926198,
+    "energy_drift": 7.565951894024793e-06,
+    "wu_yang_residual": 3.5762786865234375e-07
+  }
+}

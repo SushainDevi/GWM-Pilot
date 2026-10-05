@@ -1,0 +1,20 @@
+{
+  "note": "Reconstructed from notebook output (Cell 13 v2 \u2014 BROKEN)",
+  "reconstructed_at": "2026-10-04T13:42:29.039970+00:00",
+  "version": "cell_13_v2",
+  "config": {
+    "decoder": "NormalizedDirectionalPoseDecoder (v2 \u2014 incorrect)"
+  },
+  "results": {
+    "heldout": {
+      "mean_loss": 2.001,
+      "mean_angle_deg": 90.22,
+      "median_angle_deg": 88.56,
+      "p90_angle_deg": 141.74
+    },
+    "equivariance_ratio": 1.003,
+    "encoder_sensitivity": 0.016
+  },
+  "verdict": "FAIL \u2014 decoder destroyed the twist signal",
+  "lesson": "Per-voxel unit-normalization destroyed magnitude information"
+}

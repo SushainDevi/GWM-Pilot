@@ -1,0 +1,554 @@
+{
+  "name": "block_15_v3_frozen",
+  "description": "ActiveTorquePilotV3 (Block 15 v3, frozen decoder, seed 15150)",
+  "format": "safetensors",
+  "n_params": 4038370,
+  "param_keys": [
+    "P",
+    "encoder.sem_enc.label_embed.weight",
+    "encoder.sem_enc.mlp.0.weight",
+    "encoder.sem_enc.mlp.0.bias",
+    "encoder.sem_enc.mlp.2.weight",
+    "encoder.sem_enc.mlp.2.bias",
+    "encoder.sem_enc.mlp.3.weight",
+    "encoder.sem_enc.mlp.3.bias",
+    "encoder.sem_enc.scene_proj.weight",
+    "encoder.sem_enc.scene_proj.bias",
+    "stack.layers.0.P",
+    "stack.layers.0.V_net.net.0.weight",
+    "stack.layers.0.V_net.net.0.bias",
+    "stack.layers.0.V_net.net.2.weight",
+    "stack.layers.0.V_net.net.2.bias",
+    "stack.layers.0.V_net.net.4.weight",
+    "stack.layers.0.W_proj.0",
+    "stack.layers.0.W_proj.1",
+    "stack.layers.0.W_proj.2",
+    "stack.layers.0.b_proj.0",
+    "stack.layers.0.b_proj.1",
+    "stack.layers.0.b_proj.2",
+    "stack.layers.1.P",
+    "stack.layers.1.V_net.net.0.weight",
+    "stack.layers.1.V_net.net.0.bias",
+    "stack.layers.1.V_net.net.2.weight",
+    "stack.layers.1.V_net.net.2.bias",
+    "stack.layers.1.V_net.net.4.weight",
+    "stack.layers.1.W_proj.0",
+    "stack.layers.1.W_proj.1",
+    "stack.layers.1.W_proj.2",
+    "stack.layers.1.b_proj.0",
+    "stack.layers.1.b_proj.1",
+    "stack.layers.1.b_proj.2",
+    "stack.layers.2.P",
+    "stack.layers.2.V_net.net.0.weight",
+    "stack.layers.2.V_net.net.0.bias",
+    "stack.layers.2.V_net.net.2.weight",
+    "stack.layers.2.V_net.net.2.bias",
+    "stack.layers.2.V_net.net.4.weight",
+    "stack.layers.2.W_proj.0",
+    "stack.layers.2.W_proj.1",
+    "stack.layers.2.W_proj.2",
+    "stack.layers.2.b_proj.0",
+    "stack.layers.2.b_proj.1",
+    "stack.layers.2.b_proj.2",
+    "stack.layers.3.P",
+    "stack.layers.3.V_net.net.0.weight",
+    "stack.layers.3.V_net.net.0.bias",
+    "stack.layers.3.V_net.net.2.weight",
+    "stack.layers.3.V_net.net.2.bias",
+    "stack.layers.3.V_net.net.4.weight",
+    "stack.layers.3.W_proj.0",
+    "stack.layers.3.W_proj.1",
+    "stack.layers.3.W_proj.2",
+    "stack.layers.3.b_proj.0",
+    "stack.layers.3.b_proj.1",
+    "stack.layers.3.b_proj.2",
+    "stack.layers.4.P",
+    "stack.layers.4.V_net.net.0.weight",
+    "stack.layers.4.V_net.net.0.bias",
+    "stack.layers.4.V_net.net.2.weight",
+    "stack.layers.4.V_net.net.2.bias",
+    "stack.layers.4.V_net.net.4.weight",
+    "stack.layers.4.W_proj.0",
+    "stack.layers.4.W_proj.1",
+    "stack.layers.4.W_proj.2",
+    "stack.layers.4.b_proj.0",
+    "stack.layers.4.b_proj.1",
+    "stack.layers.4.b_proj.2",
+    "stack.layers.5.P",
+    "stack.layers.5.V_net.net.0.weight",
+    "stack.layers.5.V_net.net.0.bias",
+    "stack.layers.5.V_net.net.2.weight",
+    "stack.layers.5.V_net.net.2.bias",
+    "stack.layers.5.V_net.net.4.weight",
+    "stack.layers.5.W_proj.0",
+    "stack.layers.5.W_proj.1",
+    "stack.layers.5.W_proj.2",
+    "stack.layers.5.b_proj.0",
+    "stack.layers.5.b_proj.1",
+    "stack.layers.5.b_proj.2",
+    "stack.layers.6.P",
+    "stack.layers.6.V_net.net.0.weight",
+    "stack.layers.6.V_net.net.0.bias",
+    "stack.layers.6.V_net.net.2.weight",
+    "stack.layers.6.V_net.net.2.bias",
+    "stack.layers.6.V_net.net.4.weight",
+    "stack.layers.6.W_proj.0",
+    "stack.layers.6.W_proj.1",
+    "stack.layers.6.W_proj.2",
+    "stack.layers.6.b_proj.0",
+    "stack.layers.6.b_proj.1",
+    "stack.layers.6.b_proj.2",
+    "stack.layers.7.P",
+    "stack.layers.7.V_net.net.0.weight",
+    "stack.layers.7.V_net.net.0.bias",
+    "stack.layers.7.V_net.net.2.weight",
+    "stack.layers.7.V_net.net.2.bias",
+    "stack.layers.7.V_net.net.4.weight",
+    "stack.layers.7.W_proj.0",
+    "stack.layers.7.W_proj.1",
+    "stack.layers.7.W_proj.2",
+    "stack.layers.7.b_proj.0",
+    "stack.layers.7.b_proj.1",
+    "stack.layers.7.b_proj.2",
+    "decoder.log_scale",
+    "decoder.mu_weights",
+    "decoder.Q",
+    "V_net.net.0.weight",
+    "V_net.net.0.bias",
+    "V_net.net.2.weight",
+    "V_net.net.2.bias",
+    "V_net.net.4.weight"
+  ],
+  "param_shapes": {
+    "P": [
+      10,
+      512
+    ],
+    "encoder.sem_enc.label_embed.weight": [
+      4,
+      256
+    ],
+    "encoder.sem_enc.mlp.0.weight": [
+      512,
+      268
+    ],
+    "encoder.sem_enc.mlp.0.bias": [
+      512
+    ],
+    "encoder.sem_enc.mlp.2.weight": [
+      512,
+      512
+    ],
+    "encoder.sem_enc.mlp.2.bias": [
+      512
+    ],
+    "encoder.sem_enc.mlp.3.weight": [
+      512
+    ],
+    "encoder.sem_enc.mlp.3.bias": [
+      512
+    ],
+    "encoder.sem_enc.scene_proj.weight": [
+      512,
+      5
+    ],
+    "encoder.sem_enc.scene_proj.bias": [
+      512
+    ],
+    "stack.layers.0.P": [
+      10,
+      512
+    ],
+    "stack.layers.0.V_net.net.0.weight": [
+      512,
+      520
+    ],
+    "stack.layers.0.V_net.net.0.bias": [
+      512
+    ],
+    "stack.layers.0.V_net.net.2.weight": [
+      256,
+      512
+    ],
+    "stack.layers.0.V_net.net.2.bias": [
+      256
+    ],
+    "stack.layers.0.V_net.net.4.weight": [
+      1,
+      256
+    ],
+    "stack.layers.0.W_proj.0": [
+      8,
+      8
+    ],
+    "stack.layers.0.W_proj.1": [
+      8,
+      8
+    ],
+    "stack.layers.0.W_proj.2": [
+      8,
+      8
+    ],
+    "stack.layers.0.b_proj.0": [
+      8
+    ],
+    "stack.layers.0.b_proj.1": [
+      8
+    ],
+    "stack.layers.0.b_proj.2": [
+      8
+    ],
+    "stack.layers.1.P": [
+      10,
+      512
+    ],
+    "stack.layers.1.V_net.net.0.weight": [
+      512,
+      520
+    ],
+    "stack.layers.1.V_net.net.0.bias": [
+      512
+    ],
+    "stack.layers.1.V_net.net.2.weight": [
+      256,
+      512
+    ],
+    "stack.layers.1.V_net.net.2.bias": [
+      256
+    ],
+    "stack.layers.1.V_net.net.4.weight": [
+      1,
+      256
+    ],
+    "stack.layers.1.W_proj.0": [
+      8,
+      8
+    ],
+    "stack.layers.1.W_proj.1": [
+      8,
+      8
+    ],
+    "stack.layers.1.W_proj.2": [
+      8,
+      8
+    ],
+    "stack.layers.1.b_proj.0": [
+      8
+    ],
+    "stack.layers.1.b_proj.1": [
+      8
+    ],
+    "stack.layers.1.b_proj.2": [
+      8
+    ],
+    "stack.layers.2.P": [
+      10,
+      512
+    ],
+    "stack.layers.2.V_net.net.0.weight": [
+      512,
+      520
+    ],
+    "stack.layers.2.V_net.net.0.bias": [
+      512
+    ],
+    "stack.layers.2.V_net.net.2.weight": [
+      256,
+      512
+    ],
+    "stack.layers.2.V_net.net.2.bias": [
+      256
+    ],
+    "stack.layers.2.V_net.net.4.weight": [
+      1,
+      256
+    ],
+    "stack.layers.2.W_proj.0": [
+      8,
+      8
+    ],
+    "stack.layers.2.W_proj.1": [
+      8,
+      8
+    ],
+    "stack.layers.2.W_proj.2": [
+      8,
+      8
+    ],
+    "stack.layers.2.b_proj.0": [
+      8
+    ],
+    "stack.layers.2.b_proj.1": [
+      8
+    ],
+    "stack.layers.2.b_proj.2": [
+      8
+    ],
+    "stack.layers.3.P": [
+      10,
+      512
+    ],
+    "stack.layers.3.V_net.net.0.weight": [
+      512,
+      520
+    ],
+    "stack.layers.3.V_net.net.0.bias": [
+      512
+    ],
+    "stack.layers.3.V_net.net.2.weight": [
+      256,
+      512
+    ],
+    "stack.layers.3.V_net.net.2.bias": [
+      256
+    ],
+    "stack.layers.3.V_net.net.4.weight": [
+      1,
+      256
+    ],
+    "stack.layers.3.W_proj.0": [
+      8,
+      8
+    ],
+    "stack.layers.3.W_proj.1": [
+      8,
+      8
+    ],
+    "stack.layers.3.W_proj.2": [
+      8,
+      8
+    ],
+    "stack.layers.3.b_proj.0": [
+      8
+    ],
+    "stack.layers.3.b_proj.1": [
+      8
+    ],
+    "stack.layers.3.b_proj.2": [
+      8
+    ],
+    "stack.layers.4.P": [
+      10,
+      512
+    ],
+    "stack.layers.4.V_net.net.0.weight": [
+      512,
+      520
+    ],
+    "stack.layers.4.V_net.net.0.bias": [
+      512
+    ],
+    "stack.layers.4.V_net.net.2.weight": [
+      256,
+      512
+    ],
+    "stack.layers.4.V_net.net.2.bias": [
+      256
+    ],
+    "stack.layers.4.V_net.net.4.weight": [
+      1,
+      256
+    ],
+    "stack.layers.4.W_proj.0": [
+      8,
+      8
+    ],
+    "stack.layers.4.W_proj.1": [
+      8,
+      8
+    ],
+    "stack.layers.4.W_proj.2": [
+      8,
+      8
+    ],
+    "stack.layers.4.b_proj.0": [
+      8
+    ],
+    "stack.layers.4.b_proj.1": [
+      8
+    ],
+    "stack.layers.4.b_proj.2": [
+      8
+    ],
+    "stack.layers.5.P": [
+      10,
+      512
+    ],
+    "stack.layers.5.V_net.net.0.weight": [
+      512,
+      520
+    ],
+    "stack.layers.5.V_net.net.0.bias": [
+      512
+    ],
+    "stack.layers.5.V_net.net.2.weight": [
+      256,
+      512
+    ],
+    "stack.layers.5.V_net.net.2.bias": [
+      256
+    ],
+    "stack.layers.5.V_net.net.4.weight": [
+      1,
+      256
+    ],
+    "stack.layers.5.W_proj.0": [
+      8,
+      8
+    ],
+    "stack.layers.5.W_proj.1": [
+      8,
+      8
+    ],
+    "stack.layers.5.W_proj.2": [
+      8,
+      8
+    ],
+    "stack.layers.5.b_proj.0": [
+      8
+    ],
+    "stack.layers.5.b_proj.1": [
+      8
+    ],
+    "stack.layers.5.b_proj.2": [
+      8
+    ],
+    "stack.layers.6.P": [
+      10,
+      512
+    ],
+    "stack.layers.6.V_net.net.0.weight": [
+      512,
+      520
+    ],
+    "stack.layers.6.V_net.net.0.bias": [
+      512
+    ],
+    "stack.layers.6.V_net.net.2.weight": [
+      256,
+      512
+    ],
+    "stack.layers.6.V_net.net.2.bias": [
+      256
+    ],
+    "stack.layers.6.V_net.net.4.weight": [
+      1,
+      256
+    ],
+    "stack.layers.6.W_proj.0": [
+      8,
+      8
+    ],
+    "stack.layers.6.W_proj.1": [
+      8,
+      8
+    ],
+    "stack.layers.6.W_proj.2": [
+      8,
+      8
+    ],
+    "stack.layers.6.b_proj.0": [
+      8
+    ],
+    "stack.layers.6.b_proj.1": [
+      8
+    ],
+    "stack.layers.6.b_proj.2": [
+      8
+    ],
+    "stack.layers.7.P": [
+      10,
+      512
+    ],
+    "stack.layers.7.V_net.net.0.weight": [
+      512,
+      520
+    ],
+    "stack.layers.7.V_net.net.0.bias": [
+      512
+    ],
+    "stack.layers.7.V_net.net.2.weight": [
+      256,
+      512
+    ],
+    "stack.layers.7.V_net.net.2.bias": [
+      256
+    ],
+    "stack.layers.7.V_net.net.4.weight": [
+      1,
+      256
+    ],
+    "stack.layers.7.W_proj.0": [
+      8,
+      8
+    ],
+    "stack.layers.7.W_proj.1": [
+      8,
+      8
+    ],
+    "stack.layers.7.W_proj.2": [
+      8,
+      8
+    ],
+    "stack.layers.7.b_proj.0": [
+      8
+    ],
+    "stack.layers.7.b_proj.1": [
+      8
+    ],
+    "stack.layers.7.b_proj.2": [
+      8
+    ],
+    "decoder.log_scale": [],
+    "decoder.mu_weights": [
+      3
+    ],
+    "decoder.Q": [
+      3,
+      10
+    ],
+    "V_net.net.0.weight": [
+      512,
+      520
+    ],
+    "V_net.net.0.bias": [
+      512
+    ],
+    "V_net.net.2.weight": [
+      256,
+      512
+    ],
+    "V_net.net.2.bias": [
+      256
+    ],
+    "V_net.net.4.weight": [
+      1,
+      256
+    ]
+  },
+  "saved_at": "2026-10-04T13:41:36.798521+00:00",
+  "config": {
+    "grid_res": 48,
+    "n_pts": 2000,
+    "n_epochs": 30,
+    "batch_size": 8,
+    "stack_dt": 0.2,
+    "a_cap": 100.0,
+    "j_cap": 5.0,
+    "torque_std": 1.0,
+    "torque_scale": 5.0,
+    "decoder_frozen": true,
+    "log_scale_init": 100.0
+  },
+  "final_metrics": {
+    "train_loss_initial": 4.7589,
+    "train_loss_final": 3.7916,
+    "null_baseline_loss": 3.8022,
+    "transport_ratio": 0.0,
+    "heldout_error_deg": 91.66,
+    "null_error_deg": 92.63,
+    "verdict": "definitive_negative"
+  },
+  "cell": "block_15_v3",
+  "seed": 15150
+}

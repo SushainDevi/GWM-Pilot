@@ -1,0 +1,41 @@
+{
+  "checks": {
+    "6.6a h0 varies across scenes with different twists": true,
+    "6.6b h0 distinguishes +\u03b8 from \u2212\u03b8 (v3 new)": true,
+    "6.6c h0 grows monotonically with twist magnitude": true,
+    "6.7 Equivariance (informational for v3) [info]": true,
+    "6.8a Loss decreases over training": true,
+    "6.8b Final loss is small (< 0.01)": true
+  },
+  "passed_counted": 5,
+  "total_counted": 5,
+  "all_pass": true,
+  "seed": 6060,
+  "timestamp": "2026-10-04T11:27:16.305561+00:00",
+  "version": "v3 \u2014 bivector direction + angle input",
+  "config": {
+    "sem_enc_in_dim": 265,
+    "total_params": 3587584
+  },
+  "scene_sensitivity": {
+    "h0_delta_0_5_vs_1_5": 0.31856149435043335,
+    "h0_delta_1_5_vs_2_5": 0.5609182715415955,
+    "h0_delta_0_5_vs_2_5": 0.5506119728088379,
+    "h0_delta_pos_neg_1_5": 0.2677426338195801,
+    "twist_scale_diffs": [
+      0.25079867243766785,
+      0.12229935824871063,
+      0.26698657870292664
+    ]
+  },
+  "equivariance_informational": {
+    "residual": 0.054600685834884644,
+    "no_info_baseline": 1.5482783317565918,
+    "ratio": 0.03526542012180568
+  },
+  "overfit": {
+    "n_steps": 300,
+    "initial_loss": 0.02483794465661049,
+    "final_loss": 5.162487659582382e-10
+  }
+}

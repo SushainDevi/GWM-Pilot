@@ -1,0 +1,52 @@
+{
+  "checks": {
+    "6.6a h0 varies across scenes with different twists": true,
+    "6.6b h0 distinguishes +\u03b8 from \u2212\u03b8": true,
+    "6.6c h0 grows with twist magnitude": true,
+    "6.6d (v5 FIXED) absolute scene-level h0 variance > 0.1": true,
+    "6.6e (v5 NEW) scene offset is non-negligible": true,
+    "6.7 Equivariance (informational) [info]": true,
+    "6.8a Loss decreases over training": true,
+    "6.8b Final loss is small (< 0.01)": true
+  },
+  "passed_counted": 7,
+  "total_counted": 7,
+  "all_pass": true,
+  "seed": 6060,
+  "timestamp": "2026-10-04T12:34:42.300077+00:00",
+  "version": "v5 \u2014 explicit scene offset",
+  "config": {
+    "sem_enc_in_dim": 268,
+    "total_params": 3592192,
+    "scene_proj_shape": [
+      512,
+      5
+    ]
+  },
+  "scene_sensitivity": {
+    "h0_delta_0_5_vs_1_5": 4.487249851226807,
+    "h0_delta_1_5_vs_2_5": 0.5781670212745667,
+    "h0_delta_0_5_vs_2_5": 4.538429260253906,
+    "h0_delta_pos_neg_1_5": 4.4939422607421875,
+    "twist_scale_diffs": [
+      4.487367153167725,
+      0.12259293347597122,
+      4.4912614822387695
+    ],
+    "h0_mean_norm": 22.337020874023438,
+    "h0_var_sqrt": 2.131928089367665,
+    "h0_var_ratio": 0.09544370761845705,
+    "delta_h0_norm": 2.252368688583374,
+    "delta_h0_ratio": 0.10070032693563694
+  },
+  "equivariance_informational": {
+    "residual": 0.05460093915462494,
+    "no_info_baseline": 1.5482778549194336,
+    "ratio": 0.03526559459669218
+  },
+  "overfit": {
+    "n_steps": 300,
+    "initial_loss": 0.024838624522089958,
+    "final_loss": 5.29217614175792e-10
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "checks": {
+    "5.0a Encoder produces nonzero bivector": true,
+    "5.0b Bivector is rotation-sensitive": true,
+    "5.1a Forward produces finite outputs": true,
+    "5.1b R_pred \u2208 SO(3) (det = +1)": true,
+    "5.1c R_pred orthogonal": true,
+    "5.1d All three losses finite at init": true,
+    "5.2a All parameters receive gradients": true,
+    "5.2b Encoder receives gradients": true,
+    "5.2c No NaN/Inf in any gradient": true,
+    "5.2d Encoder gradient norms are non-trivial (> 1e-12)": true,
+    "5.3a Pre-training equivariance (informational)": false,
+    "5.3b Post-training equivariance": false,
+    "5.4a Loss decreases over training": true,
+    "5.4b Loss is mostly monotone-decreasing": true,
+    "5.4c Final loss meaningfully reduced (> 10%)": true,
+    "5.4d Final per-scene loss bounded": true,
+    "5.4e Generalization across 10 scenes [informational]": true,
+    "5.5a L_task in reasonable range": true,
+    "5.5b L_ym in reasonable range": true,
+    "5.5c L_energy in reasonable range": true
+  },
+  "passed": 18,
+  "total": 20,
+  "all_pass": false,
+  "seed": 5050,
+  "timestamp": "2026-10-04T08:10:03.402061+00:00",
+  "encoder_patch": {
+    "method": "PCA normals wired into CliffordFieldBuilder",
+    "bivector_mean_norm": 0.9500000476837158
+  },
+  "forward": {
+    "R_pred_det": 1.0000001192092896,
+    "R_pred_orth_err": 1.1920928955078125e-07,
+    "L_task_init": 3.6499223709106445,
+    "L_ym_init": 1.9802960196102504e-06,
+    "L_energy_init": 0.08968313038349152
+  },
+  "backward": {
+    "n_params": 47,
+    "n_with_grad": 47,
+    "n_encoder_with_grad": 7,
+    "n_encoder_total": 7,
+    "encoder_grad_norms": {
+      "sem_enc.label_embed.weight": 0.0003549391694832593,
+      "sem_enc.mlp.0.weight": 0.0008177687996067107,
+      "sem_enc.mlp.0.bias": 0.0006499583250842988,
+      "sem_enc.mlp.2.weight": 0.001526862382888794,
+      "sem_enc.mlp.2.bias": 0.0022748950868844986,
+      "sem_enc.mlp.3.weight": 6.804950680816546e-05,
+      "sem_enc.mlp.3.bias": 7.405585347441956e-05
+    }
+  },
+  "equivariance": {
+    "pre_training_residual": 1.8315808773040771,
+    "pre_training_pose_magnitude": 0.23362286388874054,
+    "pre_training_degenerate": false,
+    "post_training_residual": 1.5896704196929932,
+    "post_training_pose_magnitude": 0.8553798794746399,
+    "post_training_degenerate": false,
+    "post_training_equivariance_status": "measured"
+  },
+  "overfit_single_scene": {
+    "n_steps": 500,
+    "loss_history": [
+      [
+        0,
+        6.174282073974609
+      ],
+      [
+        25,
+        6.151289939880371
+      ],
+      [
+        50,
+        5.951655387878418
+      ],
+      [
+        75,
+        5.268989086151123
+      ],
+      [
+        100,
+        3.6743171215057373
+      ],
+      [
+        125,
+        1.2245692014694214
+      ],
+      [
+        150,
+        0.1630309522151947
+      ],
+      [
+        175,
+        0.02206072025001049
+      ],
+      [
+        200,
+        0.005685737356543541
+      ],
+      [
+        225,
+        0.0034531408455222845
+      ],
+      [
+        250,
+        0.0004255531821399927
+      ],
+      [
+        275,
+        5.066048834123649e-05
+      ],
+      [
+        300,
+        0.0013368696672841907
+      ],
+      [
+        325,
+        0.0004761077871080488
+      ],
+      [
+        350,
+        0.007461922708898783
+      ],
+      [
+        375,
+        0.0021938448771834373
+      ],
+      [
+        400,
+        4.721653021988459e-05
+      ],
+      [
+        425,
+        1.1151551916555036e-05
+      ],
+      [
+        450,
+        2.024899913521949e-06
+      ],
+      [
+        475,
+        1.9886681457137456e-07
+      ],
+      [
+        499,
+        3.1414998602485866e-08
+      ]
+    ],
+    "pose_history": [
+      [
+        0,
+        0.24957257509231567
+      ],
+      [
+        25,
+        0.2534482181072235
+      ],
+      [
+        50,
+        0.28684940934181213
+      ],
+      [
+        75,
+        0.3972216844558716
+      ],
+      [
+        100,
+        0.6484760642051697
+      ],
+      [
+        125,
+        0.9351173043251038
+      ],
+      [
+        150,
+        1.4658437967300415
+      ],
+      [
+        175,
+        1.532273769378662
+      ],
+      [
+        200,
+        1.5746219158172607
+      ],
+      [
+        225,
+        1.5585875511169434
+      ],
+      [
+        250,
+        1.571805715560913
+      ],
+      [
+        275,
+        1.5791575908660889
+      ],
+      [
+        300,
+        1.567624807357788
+      ],
+      [
+        325,
+        1.577115535736084
+      ],
+      [
+        350,
+        1.545555591583252
+      ],
+      [
+        375,
+        1.5987169742584229
+      ],
+      [
+        400,
+        1.5788357257843018
+      ],
+      [
+        425,
+        1.5766870975494385
+      ],
+      [
+        450,
+        1.5765105485916138
+      ],
+      [
+        475,
+        1.5767099857330322
+      ],
+      [
+        499,
+        1.576744556427002
+      ]
+    ],
+    "initial_loss": 6.174282073974609,
+    "final_loss": 3.1414998602485866e-08,
+    "reduction_pct": 99.99999949119592,
+    "final_pose_loss": 2.384510722208688e-08
+  },
+  "generalization_10_scenes": {
+    "per_scene_losses": [
+      8.000664710998535,
+      7.952996253967285,
+      7.80894136428833,
+      7.508332252502441,
+      6.542697429656982,
+      7.811905860900879,
+      4.982114315032959,
+      7.974879741668701,
+      7.709725379943848,
+      7.261284828186035
+    ],
+    "per_scene_pose_magnitudes": [
+      1.4059340953826904,
+      1.5424929857254028,
+      1.4769383668899536,
+      1.481469988822937,
+      1.5793482065200806,
+      1.4551546573638916,
+      1.55057692527771,
+      1.5214403867721558,
+      1.476148009300232,
+      1.5314955711364746
+    ],
+    "mean_loss": 7.3553542137146,
+    "generalizes": false
+  },
+  "loss_accounting": {
+    "L_task": 5.138257026672363,
+    "L_ym": 1.9515389340085676e-06,
+    "L_energy": 0.016272421926259995
+  }
+}

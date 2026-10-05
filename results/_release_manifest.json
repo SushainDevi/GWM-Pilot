@@ -1,0 +1,59 @@
+{
+  "release": "gwm-pilot-v1",
+  "generated_at": "2026-10-04T13:41:36.800560+00:00",
+  "session_device": "cuda",
+  "json_results_present": [
+    "block_15_results.json",
+    "block_15_v2_results.json",
+    "block_15_v3_results.json",
+    "block_9_v2_summary.json",
+    "cell_14_results.json",
+    "cell_2_results.json",
+    "cell_3_results.json",
+    "cell_4_results.json",
+    "cell_5_results.json",
+    "cell_6_results.json",
+    "cell_6_v2_results.json",
+    "cell_6_v3_results.json",
+    "cell_6_v4_results.json",
+    "cell_6_v5_results.json",
+    "cell_7_results.json",
+    "cell_8_results.json"
+  ],
+  "checkpoints": [
+    "stage3b_v2_ckpt_epoch10.pt",
+    "stage3b_v2_ckpt_epoch15.pt",
+    "stage3b_v2_ckpt_epoch20.pt",
+    "stage3b_v2_ckpt_epoch5.pt"
+  ],
+  "weights_saved": [
+    "block_15_v3_frozen",
+    "cell_14_ribbon_v7"
+  ],
+  "data_files": [
+    "traj_chunk_000.npz",
+    "traj_chunk_001.npz",
+    "traj_chunk_002.npz",
+    "traj_chunk_003.npz",
+    "traj_chunk_004.npz",
+    "traj_chunk_005.npz",
+    "traj_chunk_006.npz",
+    "traj_chunk_007.npz",
+    "traj_chunk_008.npz",
+    "traj_chunk_009.npz"
+  ],
+  "known_gaps": [
+    "cell_7b_diagnostics.json \u2014 reconstructed (partial) or lost",
+    "cell_13_results.json \u2014 see notebook output",
+    "cell_13_v2_results.json \u2014 see notebook output",
+    "cell_13_v3_sweep.json \u2014 see notebook output",
+    "cell_14_v2..v5_results.json \u2014 superseded by cell_14_results.json",
+    "block_12_v2_results.json \u2014 merged into block_9_v2_summary.json"
+  ],
+  "training_histories_in_memory": [
+    {
+      "name": "cell_14_history",
+      "epochs": 30
+    }
+  ]
+}

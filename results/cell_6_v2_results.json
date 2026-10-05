@@ -1,0 +1,63 @@
+{
+  "checks": {
+    "6.6a Centroid invariant under rotation about centroid": true,
+    "6.6b Radius invariant under rotation": true,
+    "6.6c Mean bivector magnitude invariant (relaxed)": true,
+    "6.6d NEW \u2014 h0 varies across scenes with different twists": true,
+    "6.7a Equivariance residual < 20% of no-information baseline": true,
+    "6.7b Encoder is sensitive to rotation": true,
+    "6.8a Loss decreases over training": true,
+    "6.8b Final loss is small (< 0.01)": true,
+    "6.9 Post-training equivariance residual < 20% of baseline": true
+  },
+  "passed": 9,
+  "total": 9,
+  "all_pass": true,
+  "seed": 6060,
+  "timestamp": "2026-10-04T10:14:01.678259+00:00",
+  "version": "v2 \u2014 extended semantic encoder input",
+  "encoder_equivariance": {
+    "centroid_delta": 2.7939677238464355e-08,
+    "radius_delta": 4.76837158203125e-07,
+    "mean_bivector_norm_orig": 0.003922965377569199,
+    "mean_bivector_norm_rot": 0.006044473499059677,
+    "mean_bivector_norm_delta": 0.0021215081214904785
+  },
+  "scene_sensitivity": {
+    "h0_delta_0_5_vs_1_5": 0.23107469081878662,
+    "h0_delta_1_5_vs_2_5": 0.6158596277236938,
+    "h0_delta_0_5_vs_2_5": 0.5680298805236816,
+    "encoder_is_scene_sensitive": true
+  },
+  "pipeline_equivariance": {
+    "d_orig": [
+      0.021602647379040718,
+      -0.051622167229652405,
+      0.998432993888855
+    ],
+    "d_rot": [
+      -0.8143436312675476,
+      0.1290658861398697,
+      -0.5658501386642456
+    ],
+    "R_g_d_orig": [
+      -0.8148229718208313,
+      0.18366673588752747,
+      -0.5498451590538025
+    ],
+    "residual": 0.054600849747657776,
+    "no_info_baseline": 1.5482780933380127,
+    "ratio": 0.03526553142009584,
+    "sensitivity": 1.5642831325531006
+  },
+  "overfit": {
+    "n_steps": 300,
+    "initial_loss": 0.024838179349899292,
+    "final_loss": 6.938397772993099e-11
+  },
+  "post_training_equivariance": {
+    "residual": 0.16381484270095825,
+    "baseline": 1.4885741472244263,
+    "ratio": 0.11004815783372635
+  }
+}

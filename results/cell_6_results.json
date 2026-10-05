@@ -1,0 +1,96 @@
+{
+  "checks": {
+    "6.5a Centroid invariant under rotation about centroid": true,
+    "6.5b Radius invariant under rotation": true,
+    "6.5c Mean bivector magnitude invariant": false,
+    "6.6a Equivariance residual < 20% of no-information baseline": true,
+    "6.6b Encoder is sensitive to rotation (sensitivity > residual)": true,
+    "6.7a Loss decreases over training": true,
+    "6.7b Final loss is small (< 0.01)": true,
+    "6.8 Post-training equivariance residual < 20% of baseline": true
+  },
+  "passed": 7,
+  "total": 8,
+  "all_pass": false,
+  "seed": 6060,
+  "timestamp": "2026-10-04T08:10:26.549012+00:00",
+  "encoder_equivariance": {
+    "centroid_delta": 2.7939677238464355e-08,
+    "radius_delta": 4.76837158203125e-07,
+    "mean_bivector_norm_orig": 0.003922965377569199,
+    "mean_bivector_norm_rot": 0.006044473499059677,
+    "mean_bivector_norm_delta": 0.0021215081214904785
+  },
+  "pipeline_equivariance": {
+    "d_orig": [
+      0.021602759137749672,
+      -0.051619917154312134,
+      0.9984331727027893
+    ],
+    "d_rot": [
+      -0.8143435120582581,
+      0.1290680468082428,
+      -0.5658499002456665
+    ],
+    "R_g_d_orig": [
+      -0.8148217797279358,
+      0.18366676568984985,
+      -0.5498470067977905
+    ],
+    "residual": 0.054598718881607056,
+    "no_info_baseline": 1.5482802391052246,
+    "ratio": 0.0352641062661631,
+    "sensitivity": 1.5642831325531006
+  },
+  "overfit": {
+    "n_steps": 300,
+    "loss_history": [
+      [
+        0,
+        0.02483837679028511
+      ],
+      [
+        50,
+        7.749112995725227e-08
+      ],
+      [
+        100,
+        2.039852020629951e-08
+      ],
+      [
+        150,
+        1.4262177550072863e-10
+      ],
+      [
+        200,
+        2.1694836899177616e-11
+      ],
+      [
+        250,
+        2.0044984769262975e-11
+      ],
+      [
+        299,
+        1.952206798994105e-11
+      ]
+    ],
+    "initial_loss": 0.02483837679028511,
+    "final_loss": 1.952206798994105e-11,
+    "reduction_pct": 99.9999999214036
+  },
+  "post_training_equivariance": {
+    "d_post_orig": [
+      0.07487127929925919,
+      -0.10754818469285965,
+      0.9913765788078308
+    ],
+    "d_post_rot": [
+      -0.8296808004379272,
+      0.07365509122610092,
+      -0.5533575415611267
+    ],
+    "residual": 0.1636074185371399,
+    "baseline": 1.4887219667434692,
+    "ratio": 0.10989790047568505
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "checks": {
+    "6.6a h0 varies across scenes with different twists": true,
+    "6.6b h0 distinguishes +\u03b8 from \u2212\u03b8": true,
+    "6.6c h0 grows with twist magnitude": true,
+    "6.6d (v4 NEW) scene-level h0 variation is comparable to \u2016h0\u2016": false,
+    "6.7 Equivariance (informational) [info]": true,
+    "6.8a Loss decreases over training": true,
+    "6.8b Final loss is small (< 0.01)": true
+  },
+  "passed_counted": 5,
+  "total_counted": 6,
+  "all_pass": false,
+  "seed": 6060,
+  "timestamp": "2026-10-04T12:31:53.738795+00:00",
+  "version": "v4 \u2014 scene-level bivector mean",
+  "config": {
+    "sem_enc_in_dim": 268,
+    "total_params": 3589120
+  },
+  "scene_sensitivity": {
+    "h0_delta_0_5_vs_1_5": 0.3346998393535614,
+    "h0_delta_1_5_vs_2_5": 0.5763110518455505,
+    "h0_delta_0_5_vs_2_5": 0.5703939199447632,
+    "h0_delta_pos_neg_1_5": 0.2839086353778839,
+    "twist_scale_diffs": [
+      0.27879562973976135,
+      0.12153740972280502,
+      0.2840874493122101
+    ],
+    "h0_mean_norm": 22.227636337280273,
+    "h0_var_sqrt": 0.21695376209609188,
+    "h0_var_ratio": 0.00976054128311503
+  },
+  "equivariance_informational": {
+    "residual": 0.054601848125457764,
+    "no_info_baseline": 1.5482773780822754,
+    "ratio": 0.03526619254302392
+  },
+  "overfit": {
+    "n_steps": 300,
+    "initial_loss": 0.024838561192154884,
+    "final_loss": 5.941918068685936e-10
+  }
+}
